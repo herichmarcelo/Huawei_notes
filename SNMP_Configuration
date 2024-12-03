@@ -1,0 +1,20 @@
+snmp sys-info location  Itaquirai-MS-Brasil
+
+snmp sys-info contact herich.marcelo@belloalimentos.com.br
+
+acl name ACL_ZABBIX_BELLO basic
+description ACL-PERMITION_ZABBIX
+rule 10 permit source any
+
+snmp-agent sys-info version v3
+
+snmp-agent protocol source-interface Vlanif 15
+
+snmp-agent usm-user v3 herich
+
+snmp-agent group v3 zabbix_bello privacy
+snmp-agent usm-user v3 herich group zabbix_bello
+
+
+snmp-agent usm-user v3 herich authentication-mode sha2-512
+snmp-agent usm-user v3 herich privacy-mode aes256
